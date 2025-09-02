@@ -60,6 +60,8 @@
             canvasLog(
               `Finger ${i}: x=${touch.clientX}, y=${touch.clientY}, id=${touch.identifier}`
             );
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            utils.drawCircle(ctx, touch.clientX, touch.clientY);
             canvasLog("Max touches supported:", navigator.maxTouchPoints);
           }
 
