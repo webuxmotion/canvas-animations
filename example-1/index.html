@@ -53,14 +53,14 @@
         });
 
         function onTouchEvent(event) {
-          console.log(event.type);
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
 
           for (let i = 0; i < event.touches.length; i++) {
             const touch = event.touches[i];
             canvasLog(
               `Finger ${i}: x=${touch.clientX}, y=${touch.clientY}, id=${touch.identifier}`
             );
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
             utils.drawCircle(ctx, touch.clientX, touch.clientY);
             canvasLog("Max touches supported:", navigator.maxTouchPoints);
           }

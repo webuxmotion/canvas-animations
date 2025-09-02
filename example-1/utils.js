@@ -33,7 +33,7 @@ utils.drawCircle = (
   ctx,
   x,
   y,
-  radius = 30,
+  radius = 60,
   fillColor = "#a2b9eb",
   strokeColor = null,
   lineWidth = 1
