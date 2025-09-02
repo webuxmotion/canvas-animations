@@ -1,0 +1,29 @@
+body,
+html {
+  background-color: #7086b6;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+#canvas {
+  background-color: #7086b6;
+  display: block;
+}
+
+/* Overlay log console */
+#log {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  overflow-y: auto;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 30px;
+  color: #a2b9eb;
+  padding: 5px;
+  box-sizing: border-box;
+  pointer-events: none; /* clicks pass through */
+}

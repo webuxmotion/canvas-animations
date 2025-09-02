@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Events display</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <canvas id="canvas"></canvas>
+    <div id="log"></div>
+
+    <script src="./utils.js"></script>
+    <script>
+      const logContainer = document.getElementById("log");
+
+      // helper for logging
+      function canvasLog(...args) {
+        const msg = args
+          .map((a) => (typeof a === "object" ? JSON.stringify(a) : a))
+          .join(" ");
+        const line = document.createElement("p");
+        line.textContent = msg;
+        logContainer.appendChild(line);
+
+        // auto scroll to bottom
+        logContainer.scrollTop = logContainer.scrollHeight;
+      }
+
+      // example use
+      window.onload = function () {
+        const canvas = document.getElementById("canvas");
+        const ctx = canvas.getContext("2d");
+
+        function resizeCanvas() {
+          canvas.width = window.innerWidth;
+          canvas.height = window.innerHeight;
+        }
+        resizeCanvas();
+        window.addEventListener("resize", resizeCanvas);
+
+        canvas.addEventListener("mousedown", (e) => {
+          //canvasLog("mousedown at", e.clientX, e.clientY);
+        });
+        canvas.addEventListener("mouseup", (e) => {
+          //canvasLog("mouseup at", e.clientX, e.clientY);
+        });
+        canvas.addEventListener("dblclick", (e) => {
+          //canvasLog("double click", e.clientX, e.clientY);
+        });
+        canvas.addEventListener("contextmenu", (e) => {
+          //e.preventDefault();
+          //canvasLog("right click", e.clientX, e.clientY);
+        });
+
+        function onTouchEvent(event) {
+          console.log(event.type);
+
+          for (let i = 0; i < event.touches.length; i++) {
+            const touch = event.touches[i];
+            canvasLog(
+              `Finger ${i}: x=${touch.clientX}, y=${touch.clientY}, id=${touch.identifier}`
+            );
+          }
+
+          // Prevent scrolling/zoom on touch
+          event.preventDefault();
+        }
+
+        canvas.addEventListener("touchstart", onTouchEvent, { passive: false });
+        canvas.addEventListener("touchmove", onTouchEvent, { passive: false });
+        canvas.addEventListener("touchend", onTouchEvent, { passive: false });
+      };
+    </script>
+  </body>
+</html>
