@@ -60,6 +60,7 @@
             canvasLog(
               `Finger ${i}: x=${touch.clientX}, y=${touch.clientY}, id=${touch.identifier}`
             );
+            canvasLog("Max touches supported:", navigator.maxTouchPoints);
           }
 
           // Prevent scrolling/zoom on touch
