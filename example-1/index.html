@@ -11,6 +11,7 @@
 
     <script src="./utils.js"></script>
     <script>
+
       const logContainer = document.getElementById("log");
 
       // helper for logging
@@ -28,6 +29,12 @@
 
       // example use
       window.onload = function () {
+        function onKeyboardEvent(event) {
+          console.log(event.type, event);
+        }
+        window.addEventListener("keydown", onKeyboardEvent, false);
+        window.addEventListener("keyup", onKeyboardEvent, false);
+
         const canvas = document.getElementById("canvas");
         const ctx = canvas.getContext("2d");
 
@@ -60,7 +67,7 @@
             // canvasLog(
             //   `Finger ${i}: x=${touch.clientX}, y=${touch.clientY}, id=${touch.identifier}`
             // );
-            
+
             utils.drawCircle(ctx, touch.clientX, touch.clientY);
             //canvasLog("Max touches supported:", navigator.maxTouchPoints);
           }
