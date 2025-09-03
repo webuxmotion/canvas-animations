@@ -8,12 +8,24 @@ window.onload = function () {
     resizeCanvas(canvas);
   });
 
+  /* 
+    INITIAL DATA
+  */
+  const ball = new Ball();
+  let angle = 0;
+
+  ball.x = canvas.width / 2;
+  ball.y = canvas.height / 2;
+  // end INITIAL DATA
+
+
   function update() {
-   
+    ball.y = canvas.height / 2 + Math.sin(angle) * 200;
+    angle += 0.1;
   }
 
   function draw() {
-
+    ball.draw(ctx);
   }
 
   function animate() {

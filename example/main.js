@@ -8,6 +8,14 @@ window.onload = function () {
     resizeCanvas(canvas);
   });
 
+  /* 
+    INITIAL DATA
+  */
+  
+  // const ball = new Ball();
+
+  // end INITIAL DATA
+
   function update() {
    
   }
