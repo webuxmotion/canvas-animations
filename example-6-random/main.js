@@ -13,7 +13,7 @@ window.onload = function () {
   */
   
   const ball = new Ball();
-  const range = 200;
+  const range = 220;
   const centerX = canvas.width / 2;
   const centerY = canvas.height / 2;
   const speedX = 0.07;
