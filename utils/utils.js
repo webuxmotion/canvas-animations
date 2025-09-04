@@ -51,7 +51,7 @@ utils.parseColor = function (color, toNumber) {
   }
 };
 
-window.utils.colorToRGB = function (color, alpha) {
+utils.colorToRGB = function (color, alpha) {
   //number in octal format or string prefixed with #
   if (typeof color === 'string' && color[0] === '#') {
     color = window.parseInt(color.slice(1), 16);
