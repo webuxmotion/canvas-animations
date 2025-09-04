@@ -13,7 +13,7 @@ window.onload = function () {
   */
   
   const ball = new Ball();
-  const range = 400;
+  const range = 200;
   const centerX = canvas.width / 2;
   const centerY = canvas.height / 2;
   const speedX = 0.07;
@@ -27,7 +27,7 @@ window.onload = function () {
 
   function update() {
     ball.x = centerX + Math.sin(angleX) * range;
-    ball.y = centerY + Math.sin(angleY) * (range + 50) ;
+    ball.y = centerY + Math.sin(angleY) * range;
 
     angleX += speedX;
     angleY += speedY;
