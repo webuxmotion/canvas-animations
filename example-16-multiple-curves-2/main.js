@@ -1,0 +1,63 @@
+window.onload = function () {
+  var canvas = document.getElementById("canvas"),
+    context = canvas.getContext("2d"),
+    points = [],
+    numPoints = 6,
+    ctrlPoint = {};
+
+  for (var i = 0; i < numPoints; i++) {
+    points.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+    });
+  }
+
+  //move to the first point
+  context.beginPath();
+  context.moveTo(points[0].x, points[1].y);
+  //curve through the rest, stopping at each midpoint
+  for (i = 1; i < numPoints - 2; i++) {
+    ctrlPoint.x = (points[i].x + points[i + 1].x) / 2;
+    ctrlPoint.y = (points[i].y + points[i + 1].y) / 2;
+    context.quadraticCurveTo(
+      points[i].x,
+      points[i].y,
+      ctrlPoint.x,
+      ctrlPoint.y
+    );
+  }
+  //curve through the last two points
+  context.quadraticCurveTo(
+    points[i].x,
+    points[i].y,
+    points[i + 1].x,
+    points[i + 1].y
+  );
+  context.stroke();
+
+  
+
+  points.forEach(item => {
+    const point = new Point();
+    point.size = 4;
+    point.x = item.x;
+    point.y = item.y;
+
+    context.lineTo(item.x, item.y);
+
+    point.draw(context);
+  });
+
+  
+
+  context.beginPath();
+  context.moveTo(points[0].x, points[0].y);
+
+  points.forEach(item => {
+
+    context.lineTo(item.x, item.y);
+
+  });
+
+  context.stroke();
+};
